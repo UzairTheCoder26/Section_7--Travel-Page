@@ -59,5 +59,70 @@
           </li>
         </ul>
       </footer>
+      <p>
+        First we to have require a package which is built in in NodeJS
+Like that : const fs = require(“fs”)
+
+After that,
+Instead of console logging username, i now wanna use that fs package to then open the user.json file and write data into it for that we have to write : fs.writeFileSync() method here and its important that you use that sync method, since that will perform the operation instantly, which is what we want here. And to write file sync we now have to pass a path to the file where this data should be written to(in this case, that's the user.json file in that data folder)and hence the full path includes both the folder name and the file name. Now to construct that path, that will work on all operating systems, we will require another core package that is builtin in the node, and that's the path package,which helps us in constructing paths, will also store this in a constant.
+Now to construct our filePath,
+which I'll store in a separate constant
+by using path.join()	
+And then here we now want
+to join multiple fragments together
+that describe the overall path
+where the data should be stored in.
+Now, the important thing here
+is that this path actually has to be an absolute path.
+And therefore, we have to start with the path
+of our project directory.
+Now, we could look this up
+and see which path that is on our operating system
+but it's far easier
+if we use a special globally available variable
+that is exposed by NodeJS.
+And that's the __dirname variable.
+Like that:
+Const filepath = path.join(__dirname, ’data’ , ‘users.json’);
+And it's important that you have two underscores
+at the beginning.
+This name might look strange
+but it is a valid JavaScript variable name,
+and it's a built-in variable or constant
+that actually holds the absolute path
+to this project directory.
+And now we can add multiple arguments
+by separating them with commas
+to build a more complex path,
+which starts at the project directory
+but then dives into the data folder,
+hence I add data as a string
+as a second argument.
+And then opens the users.json file.
+So users.json is the last argument here.
+And that constructs now a path
+that works cross platform on all operating systems
+to that file.
+And to writeFileSync, I'll now pass this filePath.
+Like that:
+fs.writeFileSync(filepath)[variable] 
+Now that's part one, that tells the file system package, where the file is into which it should write . but we also have to define the data that should be written in that file , and that should be the existing list in that file plus the username that we entered there.
+So therefore, we actually, first of all,
+need to read that file
+so that we can extract existing data out of it.
+Then we need to add userName to that existing data,
+and then write the updated existing data back into the file.
+Hence, actually before writing the file,
+I will use the fs package to read a file,
+Again, fs.readFileSync(filepath) is the correct method here.
+And I wanna read the file in that filePath.
+Here we don't need any extra argument.
+Instead we can now store the fileData in a new constant.
+
+
+.Push adds a new item to array
+
+
+      </p>
   </body>
 </html>
